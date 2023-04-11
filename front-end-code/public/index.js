@@ -70,35 +70,5 @@ function Question() {
       <button type= "submit">Next</button>
       </form>`;
 
-      element.appendChild(transitionqs);
-      element.querySelector("form").addEventListener("submit", event => {
-        event.preventDefault();
-
-        const selectedAnswer = document.querySelector("input[name='answer']: checked");
-        if(selectedAnswer) {
-            currentQuestion.answer = selectedAnswer.value;
-            element.style.opacity = 0;
-            setTimeout( () => {
-                element.remove();
-                currentQuestion++;
-                if(currentQuestion < surveyQuestion.length) {
-                    document.body.appendChild(transitionqs);
-                    setTimeout( () => {
-                        transitionqs.style.opacity = 1;
-                        setTimeout( () => {
-                            Question();
-                        }, 500);
-                    },500);
-                } else{ 
-                    console.log("Thanks to complete the survey!");
-                    console.log(surveyQuestion);
-                }
-            }, 500);
-        } else{
-            alert("Please answer the question");
-    }
-      });
 }
-
-
 Question()
